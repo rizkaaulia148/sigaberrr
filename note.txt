@@ -1,0 +1,20 @@
+Buat SIGaBer (Sistem Informasi Gaji Berkala)
+
+halaman berisi :
+                1. Home
+                2. List KGB
+                3. SK KGB
+                4. Pegawai
+                5. Kontak
+                6. Login/Logout (dropdown menu)
+
+Database       : 
+                1. tb_pegawai
+                2. tb_sk
+                3. tb_list
+                4. tb_notifikasi
+
+komponen warna :
+                1. Black (#000000)
+                2. White (#FFFFFF)
+                3. Hijau (#6FBA2C)
