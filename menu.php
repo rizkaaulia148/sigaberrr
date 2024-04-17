@@ -1,6 +1,11 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+
 <nav class="navbar navbar-expand-lg sticky-top" style="background-color:#6FBA2C;">
     <div class="container">
-        <a class="navbar-brand" href="#"><i class="bi bi-graph-up-arrow"></i>SIGaBer</a>
+        <a class="navbar-brand" href="#"><i class="bi bi-graph-up-arrow"
+                style="font-family: 'Teko', sans-serif;"></i>SIGaBer</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
