@@ -25,8 +25,9 @@
             <br> Dapatkan update kenaikan gaji berkala dan raih kesuksesan bersama kami!
         </p>
         <br>
-        <a href="#" class="btn"
-            style="background-color: #68b92e; color: #ffffff; font-family: ''Teko', sans-serif;">Alur Pengajuan KGB</a>
+        <a class="btn" <?php echo (isset($_GET['x']) && $_GET['x'] == 'aluKGB') ? 'link-green' : 'link-grey'; ?>
+            style="background-color: #68b92e; color: #ffffff; font-family: ''Teko', sans-serif;" href="alurKGB">Alur
+            Pengajuan KGB</a>
         <br><br><br><br><br><br>
     </div>
 </div>

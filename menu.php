@@ -13,6 +13,7 @@
 
         .navbar {
             background-color: #D9D9D9;
+            padding: 8px 16px;
         }
 
         .navbar-brand {
@@ -48,13 +49,21 @@
             font-family: 'Teko', sans-serif;
             font-size: 30px;
         }
+
+        .dropdown-item i {
+            font-size: 16px;
+        }
+
+        .dropdown-item {
+            font-size: 14px;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="home">SiGaBer</a>
+            <a class="navbar-brand" href=".">SiGaBer</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -62,7 +71,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav navbar-menu">
                     <li class="nav-item">
-                        <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'home') ? 'link-green' : 'link-grey'; ?>"
+                        <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'home') || !isset($_GET['x'])) ? 'link-green' : 'link-grey'; ?>"
                             aria-current="page" href="home">Home</a>
                     </li>
                     <li class="nav-item">
@@ -76,6 +85,10 @@
                     <li class="nav-item">
                         <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'pegawai') ? 'link-green' : 'link-grey'; ?>"
                             aria-current="page" href="pegawai">Pegawai</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'about') ? 'link-green' : 'link-grey'; ?>"
+                            aria-current="page" href="about">About</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
