@@ -1,8 +1,14 @@
 <?php
-session_start();
+//session_start();
 if (empty($_SESSION['username_sigaber'])) {
     header('location:login');
 }
+
+include "proses/connect.php";
+$query = mysqli_query($conn, "SELECT * FROM tb_pegawai WHERE email ='$_SESSION[username_sigaber]'");
+$hasil = mysqli_fetch_array($query);
+
+
 ?>
 
 <!doctype html>

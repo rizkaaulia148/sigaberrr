@@ -5,8 +5,8 @@ halaman berisi :
                 2. List KGB
                 3. SK KGB
                 4. Pegawai
-                5. Kontak
-                6. Login/Logout (dropdown menu)
+                5. About
+                6. Login/Logout/Setting (dropdown menu)
 
 Database       : 
                 1. tb_pegawai
@@ -14,7 +14,24 @@ Database       :
                 3. tb_list
                 4. tb_notifikasi
 
-komponen warna :
+komponen warna :x
                 1. Black (#000000)
                 2. White (#FFFFFF)
                 3. Hijau (#6FBA2C)
+
+
+#Hak akses Admin/TU (1)
+1. Home (Melihat)
+2. List KGB (CRUD)
+3. SK KGB (CRUD)
+4. Pegawai (CRUD)
+5. About (Melihat)
+6. Login/Logout/Setting (CRUD)
+
+
+#Hak akses Pegawa (2)
+1. Home
+2. List KGB 
+3. SK KGB
+4. About
+5. Login/Logout/Setting (CRUD)

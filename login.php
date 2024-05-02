@@ -1,3 +1,10 @@
+<?php
+//session_start();
+if (!empty($_SESSION['username_sigaber'])) {
+    header('location:home');
+}
+?>
+
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 
