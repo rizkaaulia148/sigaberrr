@@ -82,6 +82,14 @@
                         <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'skkgb') ? 'link-green' : 'link-grey'; ?>"
                             aria-current="page" href="skkgb">SK KGB</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'send') ? 'link-green' : 'link-grey'; ?>"
+                            aria-current="page" href="send">Send</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'history') ? 'link-green' : 'link-grey'; ?>"
+                            aria-current="page" href="history">History Message</a>
+                    </li>
                     <?php if ($hasil['HakAkses'] == 1) { ?>
                         <li class="nav-item">
                             <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'pegawai') ? 'link-green' : 'link-grey'; ?>"
