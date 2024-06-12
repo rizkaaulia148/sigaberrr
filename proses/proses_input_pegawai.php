@@ -1,30 +1,26 @@
 <?php
-include "bagian_connect.php";
-$name = (isset($_POST['Nama'])) ? htmlentities($_POST['nama']) : "";
+include "connect.php";
+$nip = (isset($_POST['NIP'])) ? intval($_POST['NIP']) : 0;
+//$nip = (isset($_POST['NIP'])) ? htmlentities($_POST['NIP']) : "";
+$name = (isset($_POST['Nama'])) ? htmlentities($_POST['Nama']) : "";
 $username = (isset($_POST['Email'])) ? htmlentities($_POST['Email']) : "";
 $jabatan = (isset($_POST['Jabatan'])) ? htmlentities($_POST['Jabatan']) : "";
-$gajiterkini = (isset($_POST['GajiTerkini'])) ? htmlentities($_POST['GajiTerkini']) : "";
-$tanggalkgb = (isset($_POST['TanggalKGB'])) ? htmlentities($_POST['TanggalKGB']) : "";
+$gajiterkini = (isset($_POST['GajiTerkini'])) ? str_replace(['Rp', '.', ','], '', $_POST['GajiTerkini']) : "";
+$tanggalkgb = (isset($_POST['TanggalKGB'])) ? date('Y-m-d H:i:s', strtotime($_POST['TanggalKGB'])) : '0000-00-00 00:00:00';
+//$tanggalkgb = (isset($_POST['TanggalKGB'])) ? htmlentities($_POST['TanggalKGB']) : "";
 $nowa = (isset($_POST['NoWA'])) ? htmlentities($_POST['NoWA']) : "";
 $HakAkses = (isset($_POST['HakAkses'])) ? htmlentities($_POST['HakAkses']) : "";
-$password = md5('password');
+$password = md5('Password');
 
-if (!empty($_POST['input_user_validate'])) {
-    $select = mysqli_query($conn, "SELECT * FROM tb_pegawai WHERE username='$Email'");
-    if (mysqli_num_rows($select) > 0) {
-        $message = '<script>alert("Username yang dimasukkan telah ada");
-        window.location="../user"</script>
-        </script>';
+if (!empty($_POST['input_pegawai_validate'])) {
+    $query = mysqli_query($conn, "INSERT INTO tb_pegawai (NIP, Nama, Email, Jabatan, GajiTerkini, TanggalKGB, NoWA, HakAkses, Password) 
+values('$nip','$name', '$username', '$jabatan', '$gajiterkini', '$tanggalkgb', '$nowa', '$HakAkses', '$password')");
+    if ($query) {
+        $message = '<script>alert("Data berhasil dimasukkan");
+                    window.location="../pegawai"</script>
+                    </script>';
     } else {
-        $query = mysqli_query($conn, "INSERT INTO tb_pegawai(nama,username,level,nohp,alamat,password) 
-        values('$name', '$username', '$jabatan', '$gajiterkini', '$tanggalkgb', '$nowa', '$HakAkses' '$password' )");
-        if ($query) {
-            $message = '<script>alert("Data berhasil dimasukkan");
-            window.location="../user"</script>
-            </script>';
-        } else {
-            $message = '<script>alert("Data gagal dimasukkan")</script>';
-        }
+        $message = '<script>alert("Data gagal dimasukkan")</script>';
     }
 }
 echo $message;

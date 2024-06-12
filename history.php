@@ -74,7 +74,6 @@
         <div class="col-lg bg-light mt-4">
             <div class="card">
                 <div class="col-12 mb-4">
-
                     <div class="card-header border-bottom d-flex align-items-center justify-content-between">
                         <h2 class="fs-5 fw-bold mb-0">History Message</h2>
                     </div>

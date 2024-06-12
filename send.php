@@ -335,24 +335,24 @@
                                 <small class="text-italic">Usable variable : {name}, {var1},
                                     {var2},...</small>
                             </div>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label for="typing">Typing</label>
-                        <div class="input-group w-100 flex-nowrap">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="typing" style="cursor:pointer">
-                                <label class="form-check-label" for="typing">Off</label>
+                            <div class="form-group mb-4 mb-2">
+                                <label for="typing">Typing</label>
+                                <div class="input-group w-100 flex-nowrap">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="typing"
+                                            style="cursor:pointer">
+                                        <label class="form-check-label" for="typing">Off</label>
+                                    </div>
+                                </div>
+                                <small class="text-italic">Set to on if you want to simulate typing</small>
                             </div>
-                        </div>
-                        <small class="text-italic">Set to on if you want to simulate typing</small>
-                    </div>
-                    <div class="d-grid mt-2">
-                    </div>
+                            <div class="d-grid mt-2">
+                            </div>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
     </main>
 
     <!-- Core -->

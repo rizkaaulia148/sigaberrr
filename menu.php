@@ -56,6 +56,13 @@
 
         .dropdown-item {
             font-size: 14px;
+            background-color: white;
+        }
+
+        .bi-person-circle {
+            margin-right: 0.5rem;
+            color: black;
+            font-size: 1.2rem;
         }
     </style>
 </head>
@@ -82,15 +89,15 @@
                         <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'skkgb') ? 'link-green' : 'link-grey'; ?>"
                             aria-current="page" href="skkgb">SK KGB</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'send') ? 'link-green' : 'link-grey'; ?>"
-                            aria-current="page" href="send">Send</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'history') ? 'link-green' : 'link-grey'; ?>"
-                            aria-current="page" href="history">History Message</a>
-                    </li>
-                    <?php if ($hasil['HakAkses'] == 1) { ?>
+                    <?php if ($hasil['HakAkses'] == 'TU') { ?>
+                        <li class="nav-item">
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'send') ? 'link-green' : 'link-grey'; ?>"
+                                aria-current="page" href="send">Send</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'history') ? 'link-green' : 'link-grey'; ?>"
+                                aria-current="page" href="history">History Message</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'pegawai') ? 'link-green' : 'link-grey'; ?>"
                                 aria-current="page" href="pegawai">Pegawai</a>
@@ -103,9 +110,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <?php
-                            echo $hasil['Email'];
-                            ?>
+                            <i class="bi bi-person-circle"></i></i> <!-- Icon for a person -->
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end mt-2">
                             <li><a class="dropdown-item" href="#"><i class="bi bi-person-square"></i> Profile</a></li>

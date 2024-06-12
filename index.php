@@ -11,7 +11,7 @@ if (isset($_GET['x']) && $_GET['x'] == 'home') {
     $page = "skkgb.php";
     include "main.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'pegawai') {
-    if ($_SESSION['level_sigaber'] == 1) {
+    if ($_SESSION['level_sigaber'] == 'TU') {
         $page = "pegawai.php";
         include "main.php";
     } else {
