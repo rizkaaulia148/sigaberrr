@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="auto">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -10,20 +10,20 @@
         @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
 
         html,
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             height: 100%;
-            margin: 0;
             font-family: 'Teko', sans-serif;
         }
 
-        body {
-            overflow: hidden;
-        }
-
         .login-form {
-            position: relative;
+            position: reltive;
             min-height: 100vh;
-            height: 100vh;
             z-index: 0;
             background: #AFDA90;
             padding: 40px;
@@ -33,26 +33,17 @@
             align-items: center;
         }
 
-
         .container {
-            max-width: 1000px;
+            max-width: 890px;
             margin: 0 auto;
         }
 
         .login-form h2 {
             font-size: 30px;
-            line-height: 35px;
-            margin-bottom: 0.1px;
+            line-height: 40px;
+            margin-bottom: 5px;
             font-weight: 500;
             color: black;
-            text-align: center;
-        }
-
-        .login-form h6 {
-            font-size: 13px;
-            line-height: 35px;
-            font-weight: 500;
-            color: #808080;
             text-align: center;
         }
 
@@ -64,7 +55,7 @@
 
         .content {
             flex-basis: 50%;
-            padding: 4em 5em;
+            padding: 3em 3em;
             /*background: #AFDA90;*/
             background: white;
             box-shadow: 2px 9px 49px -17px rgba(0, 0, 0, 0.1);
@@ -176,16 +167,16 @@
         <div class="container">
             <div class="main">
                 <div class="content">
-                    <h2>WELCOME</h2>
-                    <h6>Cek jadwal kenaikan gaji berkala sekarang!</h6>
+                    <h2>Silahkan Login</h2>
                     <form novalidate action="proses/proses_login.php" method="POST">
-                        <input name="username" type="email" placeholder="User Email" required autofocus="">
+                        <input name="name" type="email" placeholder="User Email" required autofocus="">
                         <input name="password" type="password" placeholder="User Password" required autofocus="">
+
                         <button class="btn" type="submit" name="submit_validate" value="abc">Login</button>
                     </form>
                 </div>
                 <div class="form-img">
-                    <img src="img/bgg.png">
+                    <img src="img/bg09.png">
                 </div>
             </div>
         </div>

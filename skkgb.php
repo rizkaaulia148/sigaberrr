@@ -1,6 +1,6 @@
 <?php
 include "proses/connect.php";
-$query = mysqli_query($conn, "SELECT * FROM tb_listkgb");
+$query = mysqli_query($conn, "SELECT * FROM tb_sk");
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
@@ -49,33 +49,24 @@ while ($record = mysqli_fetch_array($query)) {
         <div class="card-body">
             <div class="row">
                 <div class="col d-flex justify-content-end">
-                    <a class="btn" data-bs-toggle="modal" data-bs-target="#ModalTambahList" <?php echo (isset($_GET['x']) && $_GET['x'] == ' ') ? 'link-green' : 'link-grey'; ?>
+                    <a class="btn" data-bs-toggle="modal" data-bs-target="#ModalTambahSK" <?php echo (isset($_GET['x']) && $_GET['x'] == ' ') ? 'link-green' : 'link-grey'; ?>
                         style="background-color: #68b92e; color: #ffffff; font-family: 'Teko', sans-serif;">Tambah
                         Data</a>
                 </div>
             </div>
 
-            <!-- Modal tambah pegawai-->
-            <div class="modal fade" id="ModalTambahList" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <!-- Modal tambah file sk-->
+            <div class="modal fade" id="ModalTambahSK" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Data Pegawai</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah File SK</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="needs-validation" novalidate action="proses/proses_input_list.php"
-                                method="POST">
+                            <form class="needs-validation" novalidate action="proses/proses_input_sk.php" method="POST">
                                 <div class="row">
-                                    <!--<div class="col-lg-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="number" class="form-control" id="floatingInput"
-                                                placeholder="NIP pegawai" name="NO" required>
-                                            <label for="floatingInput">NO</label>
-                                            <div class="invalid-feedback">Masukkan NO</div>
-                                        </div>
-                                    </div>-->
                                     <div class="col-lg-6">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" id="floatingInput"
@@ -84,16 +75,16 @@ while ($record = mysqli_fetch_array($query)) {
                                             <div class="invalid-feedback">Masukkan Nama</div>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input type="date" class="form-control" placeholder="Tanggal KGB"
-                                                name="TANGGALKGB" required>
-                                            <label for="floatingInput">Tanggal KGB</label>
-                                            <div class="invalid-feedback">Masukkan Tanggal KGB</div>
+                                            <input type="file" class="form-control" id="floatingFile" name="FILE"
+                                                required>
+                                            <label for="floatingFile">Unggah File PDF</label>
+                                            <div class="invalid-feedback">Silakan unggah file PDF</div>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingGaji"
-                                                placeholder="Gaji pegawai (Rp)" name="GAJI" required>
-                                            <label for="floatingGaji">Gaji Terkini (Rp)</label>
-                                            <div class="invalid-feedback">Masukkan Gaji Terkini</div>
+                                            <input type="text" class="form-control" id="floatingInput" placeholder="KET"
+                                                name="KET" required>
+                                            <label for="floatingInput">Keterangan</label>
+                                            <div class="invalid-feedback">Masukkan Keterangan</div>
                                         </div>
                                     </div>
 
@@ -115,7 +106,7 @@ while ($record = mysqli_fetch_array($query)) {
             foreach ($result as $row) {
                 ?>
                 <!-- Modal View-->
-                <div class="modal fade" id="ModalLihatList<?php echo $row['NO'] ?>" tabindex="-1"
+                <div class="modal fade" id="ModalLihatList<?php echo $row['NO_SK'] ?>" tabindex="-1"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
@@ -173,7 +164,7 @@ while ($record = mysqli_fetch_array($query)) {
                 <!-- Akhir modal lihat-->
 
                 <!-- Modal Edit-->
-                <div class="modal fade" id="ModalEditList<?php echo $row['NO'] ?>" tabindex="-1"
+                <div class="modal fade" id="ModalEditList<?php echo $row['NO_SK'] ?>" tabindex="-1"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
@@ -185,7 +176,7 @@ while ($record = mysqli_fetch_array($query)) {
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_edit_list.php"
                                     method="POST">
-                                    <input type="hidden" value="<?php echo $row['NO'] ?>" name="NO">
+                                    <input type="hidden" value="<?php echo $row['NO_SK'] ?>" name="NO">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
@@ -227,7 +218,7 @@ while ($record = mysqli_fetch_array($query)) {
                 <!-- Akhir modal Edit-->
 
                 <!-- Modal Hapus-->
-                <div class="modal fade" id="ModalHapusList<?php echo $row['NO'] ?>" tabindex="-1"
+                <div class="modal fade" id="ModalHapusList<?php echo $row['NO_SK'] ?>" tabindex="-1"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
@@ -239,7 +230,7 @@ while ($record = mysqli_fetch_array($query)) {
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_delete_list.php"
                                     method="POST">
-                                    <input type="hidden" value="<?php echo $row['NO'] ?>" name="NO">
+                                    <input type="hidden" value="<?php echo $row['NO_SK'] ?>" name="NO_SK">
                                     <div class="col-lg-12">
                                         Apakah anda yakin ingin menghapus Data Pegawai <b><?php echo $row['NAMA'] ?></b>
                                     </div>
@@ -267,9 +258,8 @@ while ($record = mysqli_fetch_array($query)) {
                             <tr>
                                 <th scope="col">NO</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Gaji Terkini</th>
-                                <th scope="col">TanggalKGB</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col">File</th>
+                                <th scope="col">Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -277,19 +267,19 @@ while ($record = mysqli_fetch_array($query)) {
                             foreach ($result as $row) {
                                 ?>
                                 <tr>
-                                    <td><?php echo $row['NO'] ?></td>
+                                    <td><?php echo $row['NO_SK'] ?></td>
                                     <td><?php echo $row['NAMA'] ?></td>
-                                    <td><?php echo $row['GAJI'] ?></td>
-                                    <td><?php echo $row['TANGGALKGB'] ?></td>
+                                    <td><?php echo $row['FILE'] ?></td>
+                                    <td><?php echo $row['KET'] ?></td>
                                     <td>
                                         <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal"
-                                            data-bs-target="#ModalLihatList<?php echo $row['NO'] ?>"><i
+                                            data-bs-target="#ModalLihatList<?php echo $row['NO_SK'] ?>"><i
                                                 class="bi bi-eye"></i></button>
                                         <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal"
-                                            data-bs-target="#ModalEditList<?php echo $row['NO'] ?>"><i
+                                            data-bs-target="#ModalEditList<?php echo $row['NO_SK'] ?>"><i
                                                 class="bi bi-pencil"></i></button>
                                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#ModalHapusList<?php echo $row['NO'] ?>"><i
+                                            data-bs-target="#ModalHapusList<?php echo $row['NO_SK'] ?>"><i
                                                 class="bi bi-trash"></i></button>
                                     </td>
                                 </tr>
