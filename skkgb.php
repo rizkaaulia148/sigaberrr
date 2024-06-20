@@ -65,7 +65,8 @@ while ($record = mysqli_fetch_array($query)) {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="needs-validation" novalidate action="proses/proses_input_sk.php" method="POST">
+                            <form class="needs-validation" novalidate action="proses/proses_input_sk.php" method="POST"
+                                enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-floating mb-3">
@@ -111,71 +112,31 @@ while ($record = mysqli_fetch_array($query)) {
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Detail list Kenaikan Gaji Berkala
-                                </h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Detail list Kenaikan Gaji Berkala</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_input_list.php"
                                     method="POST">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-floating mb-3">
-                                                <input disabled type="number" class="form-control" id="floatingInput"
-                                                    placeholder="NIP pegawai" name="NO" value="<?php echo $row['NO'] ?>">
-                                                <label for="floatingInput">NO</label>
-                                                <div class="invalid-feedback">Masukkan NO</div>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input disabled type="text" class="form-control" id="floatingGaji"
-                                                    placeholder="Gaji pegawai (Rp)" name="GAJI"
-                                                    value="<?php echo $row['GAJI'] ?>">
-                                                <label for="floatingGaji">Gaji Terkini (Rp)</label>
-                                                <div class="invalid-feedback">Masukkan Gaji Terkini</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-floating mb-3">
-                                                <input disabled type="text" class="form-control" id="floatingInput"
-                                                    placeholder="Nama pegawai" name="NAMA"
-                                                    value="<?php echo $row['NAMA'] ?>">
-                                                <label for="floatingInput">Nama</label>
-                                                <div class="invalid-feedback">Masukkan Nama</div>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input disabled type="text" class="form-control" id="floatingInput"
-                                                    placeholder="Tanggal KGB" name="TANGGALKGB"
-                                                    value="<?php echo date('d F Y', strtotime($row['TANGGALKGB'])); ?>"
-                                                    disabled>
-                                                <label for="floatingInput">Tanggal KGB</label>
-                                                <div class="invalid-feedback">Masukkan Tanggal KGB</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Tutup</button>
-                                    </div>
+                                    <!-- Isi form di sini -->
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Akhir modal lihat-->
-
                 <!-- Modal Edit-->
-                <div class="modal fade" id="ModalEditList<?php echo $row['NO_SK'] ?>" tabindex="-1"
+                <div class="modal fade" id="ModalEditSK<?php echo $row['NO_SK'] ?>" tabindex="-1"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit data pegawai BPS Kota Lhokseumawe
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit data SK
                                 </h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form class="needs-validation" novalidate action="proses/proses_edit_list.php"
-                                    method="POST">
+                                <form class="needs-validation" novalidate action="proses/proses_edit_sk.php" method="POST">
                                     <input type="hidden" value="<?php echo $row['NO_SK'] ?>" name="NO">
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -187,19 +148,18 @@ while ($record = mysqli_fetch_array($query)) {
                                                 <div class="invalid-feedback">Masukkan Nama</div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="floatingGaji"
-                                                    placeholder="Gaji pegawai (Rp)" name="GAJI" required
-                                                    value="<?php echo $row['GAJI'] ?>">
-                                                <label for="floatingGaji">Gaji Terkini (Rp)</label>
-                                                <div class="invalid-feedback">Masukkan Gaji Terkini</div>
+                                                <input type="file" class="form-control" id="floatingFile" name="FILE"
+                                                    required value="<?php echo $row['FILE'] ?>">
+                                                <label for="floatingFile">Unggah File PDF</label>
+                                                <div class="invalid-feedback">Silakan unggah file PDF</div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" placeholder="Tanggal KGB"
-                                                    name="TANGGALKGB" required value="<?php echo $row['TANGGALKGB'] ?>">
-                                                <label for="floatingInput">Tanggal KGB</label>
-                                                <div class="invalid-feedback">Masukkan Tanggal KGB</div>
+                                                <input type="text" class="form-control" placeholder="KET" name="KET"
+                                                    required value="<?php echo $row['KET'] ?>">
+                                                <label for="floatingInput">Keterangan</label>
+                                                <div class="invalid-feedback">Masukkan Keterangan</div>
                                             </div>
                                         </div>
                                     </div>
@@ -218,7 +178,7 @@ while ($record = mysqli_fetch_array($query)) {
                 <!-- Akhir modal Edit-->
 
                 <!-- Modal Hapus-->
-                <div class="modal fade" id="ModalHapusList<?php echo $row['NO_SK'] ?>" tabindex="-1"
+                <div class="modal fade" id="ModalHapusSK<?php echo $row['NO_SK'] ?>" tabindex="-1"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                         <div class="modal-content">
@@ -272,14 +232,13 @@ while ($record = mysqli_fetch_array($query)) {
                                     <td><?php echo $row['FILE'] ?></td>
                                     <td><?php echo $row['KET'] ?></td>
                                     <td>
-                                        <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal"
-                                            data-bs-target="#ModalLihatList<?php echo $row['NO_SK'] ?>"><i
-                                                class="bi bi-eye"></i></button>
+                                        <button class="btn btn-info btn-sm me-1 btn-lihat"
+                                            data-no-sk="<?php echo $row['NO_SK'] ?>"><i class="bi bi-eye"></i></button>
                                         <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal"
-                                            data-bs-target="#ModalEditList<?php echo $row['NO_SK'] ?>"><i
+                                            data-bs-target="#ModalEditSK<?php echo $row['NO_SK'] ?>"><i
                                                 class="bi bi-pencil"></i></button>
                                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#ModalHapusList<?php echo $row['NO_SK'] ?>"><i
+                                            data-bs-target="#ModalHapusSK<?php echo $row['NO_SK'] ?>"><i
                                                 class="bi bi-trash"></i></button>
                                     </td>
                                 </tr>
@@ -294,6 +253,21 @@ while ($record = mysqli_fetch_array($query)) {
         </div>
     </div>
 </div>
+
+<script>
+    // Fungsi untuk mengarahkan ke halaman "seepdf.php"
+    function redirectToSeePdf(noSk) {
+        window.location.href = `seepdf.php?no_sk=${noSk}`;
+    }
+
+    // Tambahkan event listener pada tombol "Lihat"
+    document.querySelectorAll('.btn-lihat').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const noSk = this.dataset.noSk;
+            redirectToSeePdf(noSk);
+        });
+    });
+</script>
 
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields

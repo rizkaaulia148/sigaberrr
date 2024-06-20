@@ -1,54 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include "proses/connect.php";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Viewer</title>
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-    <style>
-        #pdf-viewer {
-            width: 100%;
-            height: 80vh;
-        }
-    </style>
-</head>
+// Ambil nilai NO_SK dari parameter URL
+$no_sk = $_GET['no_sk'];
 
-<body>
-    <div id="pdf-viewer"></div>
+// Query untuk mengambil data file dari tabel tb_sk berdasarkan NO_SK
+$query = mysqli_query($conn, "SELECT FILE FROM tb_sk WHERE NO_SK = '$no_sk'");
+$row = mysqli_fetch_assoc($query);
 
-    <script>
-        // Assuming the PDF data is stored in a variable named '$FILE'
-        const pdfData = <?php echo json_encode($FILE); ?>;
+// Periksa apakah ada file yang ditemukan
+if ($row['FILE']) {
+    $file_path = "berkas/" . $row['FILE'];
 
-        // Create a new PDF document
-        pdfjsLib.getDocument({ data: pdfData }).promise.then(function (pdf) {
-            // Get the first page
-            pdf.getPage(1).then(function (page) {
-                const scale = 1.5;
-                const viewport = page.getViewport({ scale: scale });
+    // Baca konten file PDF
+    $file_content = file_get_contents($file_path);
 
-                // Create a canvas element to display the PDF
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-
-                // Render the PDF page on the canvas
-                const renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                page.render(renderContext);
-
-                // Append the canvas to the PDF viewer element
-                const pdfViewer = document.getElementById('pdf-viewer');
-                pdfViewer.appendChild(canvas);
-            });
-        }).catch(function (error) {
-            console.error('Error rendering PDF:', error);
-        });
-    </script>
-</body>
-
-</html>
+    // Tampilkan file PDF
+    header('Content-Type: application/pdf');
+    echo $file_content;
+} else {
+    echo "File tidak ditemukan.";
+}
+?>
