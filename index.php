@@ -11,7 +11,7 @@ if (isset($_GET['x']) && $_GET['x'] == 'home') {
     $page = "skkgb.php";
     include "main.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'pegawai') {
-    if ($_SESSION['level_sigaber'] == 'TU') {
+    if ($_SESSION['level_sigaber'] == 0) {
         $page = "pegawai.php";
         include "main.php";
     } else {
@@ -29,6 +29,15 @@ if (isset($_GET['x']) && $_GET['x'] == 'home') {
     include "main.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'history') {
     $page = "history.php";
+    include "main.php";
+} elseif (isset($_GET['x']) && $_GET['x'] == 'biodata') {
+    $page = "biodata.php";
+    include "main.php";
+} elseif (isset($_GET['x']) && $_GET['x'] == 'kgb') {
+    $page = "kgb.php";
+    include "main.php";
+} elseif (isset($_GET['x']) && $_GET['x'] == 'pdfskpegawai') {
+    $page = "pdfskpegawai.php";
     include "main.php";
 } elseif (isset($_GET['x']) && $_GET['x'] == 'login') {
     include "login.php";

@@ -1,8 +1,16 @@
+<?php
+// Simpan hak akses dari $hasil['HakAkses'] ke dalam variabel
+$hakAkses = $hasil['HakAkses'];
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>SiGaBer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
 
@@ -78,33 +86,43 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav navbar-menu">
                     <li class="nav-item">
-                        <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'home') || !isset($_GET['x'])) ? 'link-green' : 'link-grey'; ?>"
+                        <a class="nav-link ps-2 <?php echo ((!isset($_GET['x']) || $_GET['x'] == 'home') ? 'link-green' : 'link-grey'); ?>"
                             aria-current="page" href="home">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'listkgb') ? 'link-green' : 'link-grey'; ?>"
-                            aria-current="page" href="listkgb">List KGB</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'skkgb') ? 'link-green' : 'link-grey'; ?>"
-                            aria-current="page" href="skkgb">SK KGB</a>
-                    </li>
-                    <?php if ($hasil['HakAkses'] == 'TU') { ?>
+                    <?php if ($hakAkses == 1) { ?>
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'send') ? 'link-green' : 'link-grey'; ?>"
+                            <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'biodata') ? 'link-green' : 'link-grey'); ?>"
+                                aria-current="page" href="biodata">Biodata</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'kgb') ? 'link-green' : 'link-grey'); ?>"
+                                aria-current="page" href="kgb">KGB</a>
+                        </li>
+                    <?php } ?>
+                    <?php if ($hakAkses == 0) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'listkgb') ? 'link-green' : 'link-grey'); ?>"
+                                aria-current="page" href="listkgb">List KGB</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'skkgb') ? 'link-green' : 'link-grey'); ?>"
+                                aria-current="page" href="skkgb">SK KGB</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'send') ? 'link-green' : 'link-grey'); ?>"
                                 aria-current="page" href="send">Send</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'history') ? 'link-green' : 'link-grey'; ?>"
+                            <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'history') ? 'link-green' : 'link-grey'); ?>"
                                 aria-current="page" href="history">History Message</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'pegawai') ? 'link-green' : 'link-grey'; ?>"
+                            <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'pegawai') ? 'link-green' : 'link-grey'); ?>"
                                 aria-current="page" href="pegawai">Pegawai</a>
                         </li>
                     <?php } ?>
                     <li class="nav-item">
-                        <a class="nav-link ps-2 <?php echo (isset($_GET['x']) && $_GET['x'] == 'about') ? 'link-green' : 'link-grey'; ?>"
+                        <a class="nav-link ps-2 <?php echo ((isset($_GET['x']) && $_GET['x'] == 'about') ? 'link-green' : 'link-grey'); ?>"
                             aria-current="page" href="about">About</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -112,7 +130,7 @@
                             aria-expanded="false">
                             <i class="bi bi-person-circle"></i></i> <!-- Icon for a person -->
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end mt-2">
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item" href="#"><i class="bi bi-person-square"></i> Profile</a></li>
                             <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Setting</a></li>
                             <li><a class="dropdown-item" href="logout"><i class="bi bi-box-arrow-left"></i> Logout</a>
