@@ -20,8 +20,8 @@ if (!$rowPegawai) {
 
 $nipPegawai = $rowPegawai['NIP'];
 
-// Query untuk mengambil file SK dari tb_sk berdasarkan NIP pegawai
-$querySK = mysqli_query($conn, "SELECT FILE FROM tb_sk WHERE NIP = '$nipPegawai'");
+// Query untuk mengambil file SK terbaru dari tb_sk berdasarkan NIP pegawai dan NO_SK terbaru
+$querySK = mysqli_query($conn, "SELECT FILE FROM tb_sk WHERE NIP = '$nipPegawai' ORDER BY NO_SK DESC LIMIT 1");
 $rowSK = mysqli_fetch_assoc($querySK);
 
 // Periksa apakah file SK ditemukan
@@ -35,6 +35,7 @@ if ($rowSK && isset($rowSK['FILE'])) {
 
         // Tampilkan file PDF
         header('Content-Type: application/pdf');
+        header('Content-Disposition: inline; filename="' . basename($file_path) . '"');
         echo $file_content;
     } else {
         echo "File SK tidak ditemukan.";

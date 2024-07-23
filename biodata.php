@@ -79,10 +79,10 @@ $row = mysqli_fetch_array($query);
                             <div class="invalid-feedback">Masukkan Jabatan</div>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" placeholder="Tanggal KGB" name="TanggalKGB" required
-                                value="<?php echo $row['TanggalKGB'] ?>">
-                            <label for="floatingInput">Tanggal KGB</label>
-                            <div class="invalid-feedback">Masukkan Tanggal KGB</div>
+                            <input type="text" class="form-control" id="floatingInputJab" placeholder="Golongan pegawai"
+                                name="Golongan" required value="<?php echo $row['Golongan'] ?>">
+                            <label for="floatingInputJab">Golongan</label>
+                            <div class="invalid-feedback">Masukkan Golongan</div>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -100,10 +100,10 @@ $row = mysqli_fetch_array($query);
                             <div class="invalid-feedback">Masukkan Email</div>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingGaji" placeholder="Gaji pegawai (Rp)"
-                                name="GajiTerkini" required value="<?php echo $row['GajiTerkini'] ?>">
-                            <label for="floatingGaji">Gaji Terkini (Rp)</label>
-                            <div class="invalid-feedback">Masukkan Gaji Terkini</div>
+                            <input type="text" class="form-control" id="floatingInputJab" placeholder="Alamat pegawai"
+                                name="Alamat" required value="<?php echo $row['Alamat'] ?>">
+                            <label for="floatingInputJab">Alamat</label>
+                            <div class="invalid-feedback">Masukkan Alamat</div>
                         </div>
                     </div>
                 </div>

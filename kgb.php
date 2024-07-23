@@ -17,8 +17,14 @@ while ($record = mysqli_fetch_array($querySK)) {
     $result[] = $record;
 }
 
+// Query untuk mengambil data TANGGALKGB dan GAJI dari tabel tb_listkgb
+$queryKGB = mysqli_query($conn, "SELECT TANGGALKGB, GAJI FROM tb_listkgb WHERE NIP = '$nipPegawai' ORDER BY TANGGALKGB DESC LIMIT 1");
+$rowKGB = mysqli_fetch_array($queryKGB);
+$tanggalKGB = $rowKGB['TANGGALKGB'];
+$gajiKGB = $rowKGB['GAJI'];
+
 // Ubah $tanggalKGB ke dalam format timestamp
-$tanggalKGB_timestamp = strtotime($rowPegawai['TanggalKGB']);
+$tanggalKGB_timestamp = strtotime($tanggalKGB);
 
 // Hitung tanggal 10 sebulan sebelumnya
 $tanggalSepuluhHariSebulanSebelumnya = date('d-m-Y', strtotime('-1 month', $tanggalKGB_timestamp));
@@ -100,8 +106,8 @@ $tanggalSepuluhHariSebulanSebelumnya = date('d-m-Y', strtotime('-1 month', $tang
         </div>
         <div class="card-body mb-4">
             <div>
-                <p>Tanggal KGB Sebelumnya : <?php echo $rowPegawai['TanggalKGB'] ?></p>
-                <p>Gaji Sebelumnya :<?php echo $rowPegawai['GajiTerkini'] ?></p>
+                <p>Tanggal KGB Sebelumnya : <?php echo $tanggalKGB ?></p>
+                <p>Gaji Sebelumnya : <?php echo $gajiKGB ?></p>
             </div>
             <div>
                 <p>Tanggal KGB Selanjutnya: <a href="#" id="see-more-link">lihat lebih</a></p>
@@ -120,6 +126,7 @@ $tanggalSepuluhHariSebulanSebelumnya = date('d-m-Y', strtotime('-1 month', $tang
                                 <th scope="col">Nama</th>
                                 <th scope="col">File</th>
                                 <th scope="col">Keterangan</th>
+                                <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -129,6 +136,10 @@ $tanggalSepuluhHariSebulanSebelumnya = date('d-m-Y', strtotime('-1 month', $tang
                                     <td><?php echo $row['NAMA'] ?></td>
                                     <td><?php echo $row['FILE'] ?></td>
                                     <td><?php echo $row['KET'] ?></td>
+                                    <td>
+                                        <a href="seepdf.php?no_sk=<?php echo $row['NO_SK'] ?>"
+                                            class="btn btn-info btn-sm me-1 btn-lihat"><i class="bi bi-eye"></i></a>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>

@@ -67,3 +67,48 @@ $hasil = mysqli_fetch_array($query);
 </body>
 
 </html>
+
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#skkgb').DataTable();
+    });
+</script>
+
+<script>
+    // Fungsi untuk mengarahkan ke halaman "seepdf.php"
+    function redirectToSeePdf(noSk) {
+        window.location.href = `seepdf.php?no_sk=${noSk}`;
+    }
+
+    // Tambahkan event listener pada tombol "Lihat"
+    document.querySelectorAll('.btn-lihat').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const noSk = this.dataset.noSk;
+            redirectToSeePdf(noSk);
+        });
+    });
+</script>

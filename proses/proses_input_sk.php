@@ -15,7 +15,13 @@ if ($max_no == 0) {
 // Periksa apakah form telah di-submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Ambil data dari form
-  $name = isset($_POST['NAMA']) ? htmlentities($_POST['NAMA']) : "";
+  $nip = isset($_POST['NAMA']) ? htmlentities($_POST['NAMA']) : "";
+
+  //ambil nama dari NIP yang terselect
+  $query_nama = mysqli_query($conn, "SELECT NAMA FROM tb_pegawai WHERE NIP = '$nip'");
+  $row_nama = mysqli_fetch_assoc($query_nama);
+  $nama = $row_nama['NAMA'];
+
   $keterangan = isset($_POST['KET']) ? htmlentities($_POST['KET']) : "";
   $file = $_FILES['FILE'];
 
@@ -35,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Simpan data ke database (termasuk path file)
-    $query = mysqli_query($conn, "INSERT INTO tb_sk (NO_SK, NAMA, FILE, KET) VALUES ('$no', '$name', '$file_name', '$keterangan')");
+    $query = mysqli_query($conn, "INSERT INTO tb_sk (NO_SK, NIP, NAMA, FILE, KET) VALUES ('$no', '$nip', '$nama', '$file_name', '$keterangan')");
 
     if ($query) {
       $message = '<script>alert("Data berhasil dimasukkan"); window.location="../skkgb"</script>';
