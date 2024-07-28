@@ -267,7 +267,7 @@ while ($record = mysqli_fetch_array($query)) {
                         <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit data pegawai BPS Kota
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus data pegawai BPS Kota
                                         Lhokseumawe
                                     </h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
