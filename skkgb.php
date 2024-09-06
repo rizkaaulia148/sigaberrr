@@ -254,7 +254,7 @@ while ($record = mysqli_fetch_array($query)) {
                     {
                         extend: 'print',
                         text: 'Print Table', // Teks tombol
-                        title: 'List Kenaikan Gaji Berkala', // Judul untuk tabel cetak
+                        title: 'List SK Kenaikan Gaji Berkala', // Judul untuk tabel cetak
                         customize: function (win) {
                             $(win.document.body).find('table').addClass('display').css('font-size', '12px');
                         },

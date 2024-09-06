@@ -197,8 +197,7 @@ while ($record = mysqli_fetch_array($query)) {
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Detail data pegawai BPS Kota
-                                        Lhokseumawe
-                                    </h1>
+                                        Lhokseumawe</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -230,21 +229,11 @@ while ($record = mysqli_fetch_array($query)) {
                                                     <div class="invalid-feedback">Masukkan Email</div>
                                                 </div>
                                                 <div class="form-floating mb-3">
-                                                    <select disabled class="form-select" aria-label="Default select example"
-                                                        required name="HakAkses" id="">
-                                                        <?php
-                                                        $data = array("TU", "Pegawai");
-                                                        foreach ($data as $key => $value) {
-                                                            if ($row['HakAkses'] == $key + 1) {
-                                                                echo "<option selected value='$key'> $value</option>";
-                                                            } else {
-                                                                echo "<option value='$key'> $value</option>";
-                                                            }
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                    <input disabled type="text" class="form-control" id="floatingInput"
+                                                        placeholder="Hak Akses" name="HakAkses"
+                                                        value="<?php echo $row['HakAkses'] == 0 ? 'TU' : 'Pegawai' ?>">
                                                     <label for="floatingInput">Hak Akses</label>
-                                                    <div class="invalid-feedback">Pilih Hak Akses</div>
+                                                    <div class="invalid-feedback">Masukkan Hak Akses</div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -288,6 +277,7 @@ while ($record = mysqli_fetch_array($query)) {
                         </div>
                     </div>
                     <!-- Akhir modal lihat-->
+
 
                     <!-- Modal Edit-->
                     <div class="modal fade" id="ModalEditPegawai<?php echo $row['NIP'] ?>" tabindex="-1"
@@ -486,7 +476,7 @@ while ($record = mysqli_fetch_array($query)) {
                     {
                         extend: 'print',
                         text: 'Print Table', // Teks tombol
-                        title: 'List Kenaikan Gaji Berkala', // Judul untuk tabel cetak
+                        title: 'List Pegawai BPS Kota Lhokseumawe', // Judul untuk tabel cetak
                         customize: function (win) {
                             $(win.document.body).find('table').addClass('display').css('font-size', '12px');
                         },
